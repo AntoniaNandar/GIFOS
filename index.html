@@ -9,64 +9,63 @@
 </head>
 
 <body class="x">
+    <div class="line"></div>
     <header>
-        <div id="line"></div>
+       
         <div>
             <input type="checkbox" id="btnDark">
-            <label for="btnDark"><img src="/images/logo-mobile.svg" alt="burger"></label>
+            <label for="btnDark"><img src="/images/logo-mobile.svg" id="logoDark"></label>
         </div>
 
         <section>
             <input type="checkbox" id="btn">
-            <label for="btn" class="btnImg"><img src="/images/burger.svg"  id="logoDark" alt="logo"></label>
+            <label for="btn" class="btnImg"><img src="/images/burger.svg"  id="burgerMenu" alt="burgerMenu"></label>
 
             <nav class="menu">
                 <ul class="ulMenu" id="menuLista">
-                    <li><a href="#darkmode">Modo Nocturno</a></li>
-                    <li><a href="#favoritos">Favoritos</a></li>
-                    <li><a href="#mis_gifos">Mis GIFOS</a></li>
+                    <li><label for="btnDark"><p id="textDark">Modo Nocturno</p></label></li>
+                    <li><a href="#favoritos"><p >Favoritos </p></a></li>
+                    <li><a href="#mis_gifos"><p >Mis GIFOS</p></a></li>
                 </ul>
             </nav>
         </section>
     </header>
     <main>
         <div>
-            <h1 id="h1" class="darkModeP">
+            <h1 id="h1">
                 Inspírate, busca, guarda, y crea los mejores <span class="gifosSpan">GIFOS</span>
             </h1>
             <img src="/images/ilustra_header.svg" alt="header_ilustra">
         </div>
         <div>
-            <input type="text" class="search" id="search" value="Busca GIFOS y más">
+            <input type="text" class="search" id="search" placeholder="Busca GIFOS y más">
             <label for="search"></label>
         </div>
     </main>
     <section>
         <h2>Trending</h2>
-        <p class="darkModeP">Reactions, Entertainment, Sports, Stickers, Artists</p>
+        <p>Reactions, Entertainment, Sports, Stickers, Artists</p>
     </section>
     <section class="trendingGifos">
         <h2>Trending Gifos</h2>
-        <p class="darkModeP">Mira los últimos
+        <p class="parrafo">Mira los últimos
             GIFOS de nuestra comunidad.</p>
     </section>
-    <footer>
+    <footer>  
         <p>Compartir en:</p>
-        <div class="footer_conteiner">
-            <ul class="social_media">
-                <li><a href="#menu" target="blanck" title="facebook"><img src="images/icon_facebook.svg"
-                            alt="Facebook"></a></li>
-                <li><a href="#menu" target="blanck" title="Instagram"><img src="images/icon_instagram.svg"
-                            alt="Instagram"></a></li>
-                <li><a href="#menu" target="blanck" title="Twitter"><img src="images/icon-twitter.svg"
-                            alt="Twitter"></a></li>
+        <div>
+            <ul>
+                <li><a href="#" target="blanck" title="facebook"><img src="images/icon_facebook.svg" alt="Facebook"></a></li>
+                <li><a href="#" target="blanck" title="Instagram"><img src="images/icon_instagram.svg" alt="Instagram"></a></li>
+                <li><a href="#" target="blanck" title="Twitter"><img src="images/icon-twitter.svg" alt="Twitter"></a></li>
             </ul>
-            <p>© GIFOS 2020 All Rights Reserved.</p>
         </div>
+        <p>© GIFOS 2020 All Rights Reserved.</p>
     </footer>
 
+    <div class="line"></div>
+    
     <script src="script.js"></script>
-
 </body>
 
 </html>
