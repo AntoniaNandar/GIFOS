@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <title>GIFOS</title>
+</head>
+
+<body class="x">
+    <header>
+        <div id="line"></div>
+        <div>
+            <input type="checkbox" id="btnDark">
+            <label for="btnDark"><img src="/images/logo-mobile.svg" alt="burger"></label>
+        </div>
+
+        <section>
+            <input type="checkbox" id="btn">
+            <label for="btn" class="btnImg"><img src="/images/burger.svg"  id="logoDark" alt="logo"></label>
+
+            <nav class="menu">
+                <ul class="ulMenu" id="menuLista">
+                    <li><a href="#darkmode">Modo Nocturno</a></li>
+                    <li><a href="#favoritos">Favoritos</a></li>
+                    <li><a href="#mis_gifos">Mis GIFOS</a></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
+    <main>
+        <div>
+            <h1 id="h1" class="darkModeP">
+                Inspírate, busca, guarda, y crea los mejores <span class="gifosSpan">GIFOS</span>
+            </h1>
+            <img src="/images/ilustra_header.svg" alt="header_ilustra">
+        </div>
+        <div>
+            <input type="text" class="search" id="search" value="Busca GIFOS y más">
+            <label for="search"></label>
+        </div>
+    </main>
+    <section>
+        <h2>Trending</h2>
+        <p class="darkModeP">Reactions, Entertainment, Sports, Stickers, Artists</p>
+    </section>
+    <section class="trendingGifos">
+        <h2>Trending Gifos</h2>
+        <p class="darkModeP">Mira los últimos
+            GIFOS de nuestra comunidad.</p>
+    </section>
+    <footer>
+        <p>Compartir en:</p>
+        <div class="footer_conteiner">
+            <ul class="social_media">
+                <li><a href="#menu" target="blanck" title="facebook"><img src="images/icon_facebook.svg"
+                            alt="Facebook"></a></li>
+                <li><a href="#menu" target="blanck" title="Instagram"><img src="images/icon_instagram.svg"
+                            alt="Instagram"></a></li>
+                <li><a href="#menu" target="blanck" title="Twitter"><img src="images/icon-twitter.svg"
+                            alt="Twitter"></a></li>
+            </ul>
+            <p>© GIFOS 2020 All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
