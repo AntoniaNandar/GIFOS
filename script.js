@@ -16,10 +16,9 @@ btn.addEventListener("click", check);
 
 function check() {
     var menuLIsta = document.getElementById("menuLista");
-    menuLIsta.classList.toggle('listaMenu')
+    //menuLIsta.classList.toggle('listaMenu')
     if (btn.checked == true) {
         menuLIsta.style.display = "flex";
-        
     } else {
         menuLIsta.style.display = "none";
     }
@@ -40,7 +39,8 @@ textdark = (a, b) => {
 };
 textdark('body', 'darkModeBody');
 textdark('h2, p, h1', 'darkModeColor');
-textdark('.line', 'darkModeLine')
+textdark('.line', 'darkModeLine');
+
 
 //cambiar texto
 const texto = document.getElementById('textDark');

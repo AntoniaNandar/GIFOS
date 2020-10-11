@@ -27,6 +27,7 @@ ul {
         text-decoration: none;
     }
 }
+
 .gifosSpan {
     color: #5ED7C6;
 }
@@ -55,12 +56,6 @@ input[type=text]:focus {
     color: #6B7989;
 }
 
-
-//Ul menu
-.ulMenu {
-    display: none;
-}
-
 //JAVASCCRIP ATTRIBUTS
 .darkModeBody {
     background:#37383C 100%;
@@ -80,6 +75,15 @@ footer  p {
     color: #000000;
 }
 
+
+// Ul menu
+.ulMenu {
+    display: none;
+    p {
+        color: #FFFFFF;
+    }
+}
+
 .listaMenu {
     position: absolute;
     flex-direction: column;
@@ -90,7 +94,7 @@ footer  p {
     align-items: center;
 }
 
-#logoDark, #burgerMenu {
+.logoDark, #burgerMenu {
     margin: 5vw 0 2vw 0
 }
 

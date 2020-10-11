@@ -69,10 +69,6 @@ input[type=text]:focus {
   color: #6B7989;
 }
 
-.ulMenu {
-  display: none;
-}
-
 .darkModeBody {
   background: #37383C 100%;
 }
@@ -90,6 +86,14 @@ footer p {
   color: #000000;
 }
 
+.ulMenu {
+  display: none;
+}
+
+.ulMenu p {
+  color: #FFFFFF;
+}
+
 .listaMenu {
   position: absolute;
   -webkit-box-orient: vertical;
@@ -105,7 +109,7 @@ footer p {
           align-items: center;
 }
 
-#logoDark, #burgerMenu {
+.logoDark, #burgerMenu {
   margin: 5vw 0 2vw 0;
 }
 
