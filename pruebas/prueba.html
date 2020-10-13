@@ -12,11 +12,24 @@
     <label for="btn" class="btnImg"><img src="/images/burger.svg" alt="logo"></label>
 
     <input type="checkbox" id="btnMode">
-    <label for="btnMode"><p id="texto">Dark</p></label>
+    <label for="btnMode">
+        <p id="texto">Dark</p>
+    </label>
 
     <ul>
         <li><a href="/pruebas/prueba2.html">Segunda pag</a></li>
     </ul>
+
+    <input type="text" id="pruebaInput" placeholder="Buscar GIFOS">
+    <label for="pruebaInput"></label>
+
+    <style>
+        #pruebaInput {
+            background-image: url(/images/icon-search-mod-noc.svg);
+            background-repeat: no-repeat;
+            background-position: 4px center;
+        }
+    </style>
 
     <script>
         const btn = document.getElementById('btn');
@@ -36,18 +49,13 @@
 
         const btnMode = document.getElementById('btnMode');
         const texto = document.getElementById('texto');
-        btnMode.addEventListener('click', ()=> {
-            if(btnMode.checked) {
+        btnMode.addEventListener('click', () => {
+            if (btnMode.checked) {
                 texto.innerHTML = 'Mode'
-            }
-            else {
+            } else {
                 texto.innerHTML = 'Dark'
             }
         })
-
-
-
-
     </script>
 </body>
 
