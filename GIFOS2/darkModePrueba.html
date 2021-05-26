@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIFOS</title>
+</head>
+
+<body class="x">
+    <header>
+        <div>
+            <input type="checkbox" id="btnDark">
+            <label for="btnDark"><img src="/images/logo-mobile.svg" alt="logoDark"></label>
+        </div>
+
+        <section>
+            <input type="checkbox" id="btnMenu">
+            <label for="btnMenu"><img src="/images/burger.svg" alt="burgerMenu"></label>
+        </section>
+    </header>
+    <main>
+        <div>
+            <input type="text" id="search" placeholder="Busca GIFOS y más">
+            <input type="checkbox" id="searchIcon">
+            <label for="searchIcon"><img src="/images/icon-search.svg" alt="imageSearch" class="searchIcon"></label>
+        </div>
+    </main>
+    <style>
+        #search {
+            display: block;
+            border-radius: 27px;
+            border: 1px solid;
+            padding: 3vw 17vw;
+            font-size: 16px;
+        }
+
+        input[type=text]:focus {
+            color: #6B7989;
+        }
+
+        #input::placeholder {
+            color: #6B7989;
+        }
+
+        main img {
+            position: relative;
+            top: -35px;
+            left: 55vw;
+        }
+    </style>
+    <script>
+        let btnDark = document.getElementById('btnDark');
+
+        function changeImg(iconClick, iconNoc, iconToChange, number) {
+            iconClick.addEventListener('change', () => {
+                if (iconClick.checked) {
+                    let createImg = document.createElement('img');
+                    createImg.setAttribute('src', iconNoc);
+                    let logo = document.getElementsByTagName('img')[number].replaceWith(createImg);
+                } else {
+                    let createImg = document.createElement('img');
+                    createImg.setAttribute('src', iconToChange);
+                    let logo = document.getElementsByTagName('img')[number].replaceWith(createImg);
+                }
+            })
+        }
+
+        changeImg(btnDark, '/images/logo-mobile-modo-noct.svg', '/images/logo-mobile.svg', 0);
+        changeImg(btnDark, '/images/burger-modo-noct.svg', '/images/burger.svg', 1);
+        changeImg(btnDark, '/images/icon-search-mod-noc.svg', '/images/icon-search.svg', 2);
+
+
+
+        let btnMenu = document.getElementById('btnMenu');
+        let btnSearch = document.getElementById('searchIcon')
+
+        function changeCloseIcon(icon, iconNoc, iconClose, number) {
+            icon.addEventListener('click', () => {
+                if (btnDark.checked) {
+                    changeImg(icon, '/images/close-modo-noct.svg', iconNoc, number);
+                } else {
+                    changeImg(icon, '/images/close.svg', iconClose, number);
+                }
+            })
+        };
+
+        changeCloseIcon(btnMenu, '/images/burger-modo-noct.svg', '/images/burger.svg', 1)
+        changeCloseIcon(btnSearch, '/images/icon-search-mod-noc.svg', '/images/icon-search.svg', 2)
+
+
+
+
+
+        /*btnMenu.addEventListener('click', () => {
+            if (btnDark.checked) {
+                changeImage(btnMenu, '/images/close-modo-noct.svg', '/images/burger-modo-noct.svg', 1);
+            } else {
+                changeImage(btnMenu, '/images/close.svg', '/images/burger.svg', 1);
+            }
+        });
+
+        btnSearch.addEventListener('click', () => {
+            if (btnDark.checked) {
+                changeImage(btnSearch, '/images/close-modo-noct.svg', '/images/icon-search-mod-noc.svg', 2);
+            } else {
+                changeImage(btnSearch, '/images/close.svg', '/images/icon-search.svg', 2);
+            }
+        });*/
+    </script>
+</body>
+
+
+</html>

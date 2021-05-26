@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="checkbox" id="btn">
+    <label for="btn" class="btnImg"><img src="/images/burger.svg" alt="logo"></label>
+
+    <input type="checkbox" id="btnMode">
+    <label for="btnMode">
+        <p id="texto">Dark</p>
+    </label>
+
+    <ul>
+        <li><a href="/pruebas/prueba2.html">Segunda pag</a></li>
+    </ul>
+
+    <input type="text" id="pruebaInput" placeholder="Buscar GIFOS">
+    <label for="pruebaInput"></label>
+
+    <style>
+        #pruebaInput {
+            background-image: url(/images/icon-search-mod-noc.svg);
+            background-repeat: no-repeat;
+            background-position: 4px center;
+        }
+    </style>
+
+    <script>
+        const btn = document.getElementById('btn');
+        btn.addEventListener('change', () => {
+            if (btn.checked) {
+                let createImg = document.createElement('img');
+                createImg.setAttribute('src', '/images/icon-search-mod-noc.svg');
+                let logo = document.getElementsByTagName('img')[0];
+                logo.replaceWith(createImg);
+            } else {
+                let createImg = document.createElement('img');
+                createImg.setAttribute('src', '/images/burger.svg');
+                let logo = document.getElementsByTagName('img')[0];
+                logo.replaceWith(createImg);
+            }
+        })
+
+        const btnMode = document.getElementById('btnMode');
+        const texto = document.getElementById('texto');
+        btnMode.addEventListener('click', () => {
+            if (btnMode.checked) {
+                texto.innerHTML = 'Mode'
+            } else {
+                texto.innerHTML = 'Dark'
+            }
+        })
+    </script>
+</body>
+
+</html>
