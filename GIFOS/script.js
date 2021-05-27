@@ -62,6 +62,7 @@ btnDark.addEventListener('click', () => {
 
 //cambiar iconos a modo nocturno y cerrado
 let btnSearch = document.getElementById('searchBox');
+
 function changeCloseIcon(icon, iconNoc, iconClose, number) {
     icon.addEventListener('click', () => {
         if (btnDark.checked) {
@@ -75,7 +76,22 @@ function changeCloseIcon(icon, iconNoc, iconClose, number) {
 changeCloseIcon(btnMenu, '/images/burger-modo-noct.svg', '/images/burger.svg', 1)
 changeCloseIcon(btnSearch, '/images/icon-search-mod-noc.svg', '/images/icon-search.svg', 3)
 
+//explicacion de funcion de arrib 
+/*btnMenu.addEventListener('click', () => {
+    if (btnDark.checked) {
+        changeImage(btnMenu, '/images/close-modo-noct.svg', '/images/burger-modo-noct.svg', 1);
+    } else {
+        changeImage(btnMenu, '/images/close.svg', '/images/burger.svg', 1);
+    }
+});
 
+btnSearch.addEventListener('click', () => {
+    if (btnDark.checked) {
+        changeImage(btnSearch, '/images/close-modo-noct.svg', '/images/icon-search-mod-noc.svg', 2);
+    } else {
+        changeImage(btnSearch, '/images/close.svg', '/images/icon-search.svg', 2);
+    }
+});*/
 
 
 //CARROUSEL MOBILE
@@ -151,3 +167,22 @@ if (window.PointerEvent) {
     window.addEventListener('mousemove', gestureMove);
     window.addEventListener('mouseup', gestureEnd);
 }
+
+
+//TRENDING SEARCH
+let trendingSearch = document.getElementById('trendingSearch')
+
+function trendingSearchF() {
+    fetch(`https://api.giphy.com/v1/trending/searches?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le`)
+        .then(response => response.json())
+        .then(json => json.data)
+        .then(info => {
+            let nuevoText = info.splice(0, 5)
+            for (text of nuevoText) {
+                let texto = document.createElement('li')
+                texto.textContent = text
+                trendingSearch.appendChild(texto)
+            }
+        }).catch(console.error);
+}
+trendingSearchF()

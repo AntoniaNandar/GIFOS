@@ -183,8 +183,9 @@ a p,
 }
 
 .carousel .track .card {
-  width: 60vw;
-  height: 46vw;
+  width: 65vw;
+  height: 50vw;
+  padding: 22px;
 }
 
 footer ul {
