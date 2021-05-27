@@ -46,6 +46,7 @@ main {
         margin: 1.3em 0 -0.3em 0;
     }
 }
+
 .searchDiv img {
     position: relative;
     top: -33px;
@@ -97,29 +98,12 @@ input[type=text]:focus,
     border-color: white;
 }
 
-//footer
-footer {
-    ul {
-        display: flex;
-        justify-content: center;
-
-        li {
-            margin: 0 5.1%;
-        }
-    }
-
-    p {
-        font-family: 'Roboto', sans-serif;
-        color: #000000;
-    }
-}
-
-
 //Header
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     height: 95px;
 }
 
@@ -156,4 +140,45 @@ a p,
 #textDark {
     color: white;
     padding: 1.5em;
+}
+
+
+//Carrusel 
+
+.carousel {
+    width: 100vw;
+    height: 40vh;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.carousel .track {
+    position: relative;
+    top: 20px;
+    display: inline-flex;
+    touch-action: none;
+}
+
+.carousel .track .card {
+    width: 60vw;
+    height: 46vw;
+}
+
+
+//footer
+footer {
+    ul {
+        display: flex;
+        justify-content: center;
+
+        li {
+            margin: 0 5.1%;
+        }
+    }
+
+    p {
+        font-family: 'Roboto', sans-serif;
+        color: #000000;
+    }
 }
