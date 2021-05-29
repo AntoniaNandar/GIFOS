@@ -9,254 +9,115 @@
 
 <body>
     <style>
-        .iconoCerrar {
-            position: absolute;
-            margin: -25em 25em;
-        }
-
-        #contenedor {
-            margin-top: 10em;
-        }
-
-        #iconoDiv {
-            position: absolute;
-        }
-
-        #imgDiv {
-            background: green;
-        }
-
-        .hover {
-            opacity: 40%;
-        }
-
-        .icono {
+        .remove,
+        .verMas {
             display: none;
         }
 
-        .a {
-            z-index: 1;
-        }
-
-        .imgMax {
-            transform: scale(1.2);
-            /*position: absolute;*/
+        img {
+            width: 156px;
+            height: 120px;
         }
     </style>
-    <section id="contenedor">
-        <div id="iconoDiv" class="icono">
-            <img src="/img/icon-fav-hover.svg" alt="fav" class="icono1" id="fav">
-            <img src="/img/icon-download-hover.svg" alt="download" class="icono2" id="download">
-            <img src="/img/icon-max-hover.svg" alt="icono" id="max">
-        </div>
-        <div id="imgDiv">
-            <img src="" alt="img" id="img">
-        </div>
+    <div id="search">
+        <input type="text" name="input" id="inputSearch">
+        <button name="input" id="buttonSearch">Click aqui</button>
+    </div>
+    <ul></ul>
 
-    </section>
+    <div id="contenedor"></div>
+
+    <button id="verMas" class="verMas">Ver Mas</button>
+
     <script>
-        /*let contenedor = document.getElementById('contenedor')
-        let iconoDiv = document.getElementById('iconoDiv')
-        let imgDiv = document.getElementById('imgDiv')
-        let img = document.getElementById('img')
-        let icono = document.querySelector('.icono')
-        let max = document.getElementById('max')
-
-
-        function getImg() {
-            fetch('https://api.giphy.com/v1/gifs/trending?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&limit=2&rating=g')
-                .then(response => response.json())
-                .then(json => json.data)
-                .then(data => {
-                    for (i of data) {
-                        //let gif = document.createElement('img')
-
-                        let urlImg = i.images.original.url
-                        img.setAttribute('src', urlImg)
-
-                        /*let seccion = document.createElement('section')
-                        seccion.innerHTML = "a"
-                        contenedor.appendChild(seccion)*/
-                        //gif.setAttribute('class', 'img')
-                        //gif.setAttribute('alt', 'img')
-                        //imgDiv.appendChild(gif)
-                        //Aqui se agrega imagen dinamicamente creandola desde aqui
-                        /*let titulo = i.title
-                        let user = i.user.username
-                        //contenedor.addEventListener('mouseover', hover(user, titulo))
-                    }
-                })
-                .catch(console.error)
-        }
-        getImg()
-
-        contenedor.addEventListener('mouseover', hover)
-
-        function hover(user, titulo) {
-            img.classList.add('hover')
-            icono.classList.add('hover')
-            iconoDiv.classList.remove('icono')
-            iconoDiv.classList.add('a')
-            //Agregar parrafos
-            let username = document.createElement('p')
-            let title = document.createElement('p')
-            username.textContent = user
-            title.textContent = titulo
-            //username.classList.add('pHover')
-            iconoDiv.appendChild(username)
-            iconoDiv.appendChild(title)
-        }
-
-        contenedor.addEventListener('mouseout', removeHover)
-
-        function removeHover() {
-            img.classList.remove('hover')
-            iconoDiv.classList.add('icono')
-            iconoDiv.classList.remove('a')
-            //Remover los parrafos
-            var p = document.querySelectorAll('#iconoDiv > p')
-            for (let i = 0; i < p.length; i++) {
-                iconoDiv.removeChild(p[i])
-            }
-        }
-
-        let urlIcono = '/img/close.svg'
-
-        max.addEventListener('click', () => {
-            img.classList.add('imgMax')
-
-            contenedor.removeEventListener('mouseover', hover)
-            img.classList.remove('hover')
-
-            let iconoCerrar = document.createElement('img')
-            iconoCerrar.setAttribute('src', urlIcono);
-            iconoCerrar.classList.add('iconoCerrar')
-            contenedor.appendChild(iconoCerrar)
-            iconoCerrar.addEventListener('click', () => {
-                contenedor.addEventListener('mouseover', hover)
-                iconoCerrar.classList.add('icono')
-                img.classList.remove('imgMax')
-            })
-        })
-
-        //TENDENCIAS DE BUSQUEDA 
-        /*function a(){
-            fetch(`https://api.giphy.com/v1/trending/searches?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le`)
-            .then(response => response.json())
-            .then(json => json.data)
-            .then(info => { 
-                let nuevoText = info.splice(0, 5)
-                for (text of nuevoText) {  
-                    let texto = document.createElement('p')
-                    texto.textContent = text
-                    contenedor.appendChild(texto)
-                }
-            }).catch(console.error);
-        }
-        a()*/
-
-
+        let inputSearch = document.getElementById('inputSearch')
+        let buttonSearch = document.getElementById('buttonSearch')
         let contenedor = document.getElementById('contenedor')
-        let iconoDiv = document.getElementById('iconoDiv')
-        let imgDiv = document.getElementById('imgDiv')
-        let img = document.getElementById('img')
-        let icono = document.querySelector('.icono')
-        let max = document.getElementById('max')
+        let ul = document.querySelector('ul')
+        let search = document.getElementById('search')
+        let vermas = document.getElementById('verMas')
 
+        buttonSearch.addEventListener('click', buscar)
+        vermas.addEventListener('click', vermass)
+        inputSearch.addEventListener('keyup', autocomplete)
 
-        function getImg() {
-            fetch('https://api.giphy.com/v1/gifs/trending?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&limit=2&rating=g')
+        //Ver mas (pasar de 12 en 12 gif, hasta llegar a 48)
+        let numero = 12
+
+        function vermass() {
+            contenedor.innerHTML = ''
+            numero = numero + 12
+            if (numero > 48) {
+                numero = 12
+            }
+            buscar()
+        }
+
+        //Completar buscador desde las sugerencias
+        ul.addEventListener('click', (e) => {
+            inputSearch.value = e.target.firstChild.nodeValue
+            buscar()
+
+        })
+
+        /*ul.addEventListener('click', (e) => {
+            buscar(e.target.firstChild.nodeValue)
+        })*/
+        //Activar la busqueda del gif y mostrarlos en pantalla
+        function buscar() {
+            var value = inputSearch.value
+            console.log(value)
+            ul.classList.add('remove')
+            contenedor.innerHTML = ''
+            vermas.removeAttribute('class')
+            fetch(
+                    `https://api.giphy.com/v1/gifs/search?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&q=${value}&limit=${numero}&offset=0&rating=g&lang=en`
+                )
                 .then(response => response.json())
                 .then(json => json.data)
                 .then(data => {
-                    for (i of data) {
-                        //let gif = document.createElement('img')
+                    for (img of data) {
+                        let url = img.images.original.url
+                        let gif = document.createElement('img')
+                        gif.setAttribute = 'src'
+                        gif.src = url
+                        contenedor.appendChild(gif)
+                    }
+                }).catch(console.error);
+        }
 
-                        let urlImg = i.images.original.url
-                        img.setAttribute('src', urlImg)
 
-                        
-                        /*let seccion = document.createElement('section')
-                        seccion.innerHTML = "a"
-                        contenedor.appendChild(seccion)*/
-                        //gif.setAttribute('class', 'img')
-                        //gif.setAttribute('alt', 'img')
-                        //imgDiv.appendChild(gif)
-                        //Aqui se agrega imagen dinamicamente creandola desde aqui
-                        /*let titulo = i.title
-                        let user = i.user.username*/
-                        //contenedor.addEventListener('mouseover', hover(user, titulo))
+        //AUTOCOMPLETE DEL BUSCADOR
+        function autocomplete(event) {
+            let inputValue = inputSearch.value
+            ul.innerHTML = ''
+            fetch(
+                    `https://api.giphy.com/v1/gifs/search/tags?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&q=${inputValue}&limit=5&offset=0`
+                )
+                .then(response => response.json())
+                .then(json => json.data)
+                .then(data => {
+                    for (names of data) {
+                        let li = document.createElement('li')
+                        li.innerHTML = names.name
+                        ul.appendChild(li)
                     }
                 })
-                .catch(console.error)
-        }
-        getImg()
-
-        contenedor.addEventListener('mouseover', hover)
-
-        function hover(user, titulo) {
-            img.classList.add('hover')
-            icono.classList.add('hover')
-            iconoDiv.classList.remove('icono')
-            iconoDiv.classList.add('a')
-            //Agregar parrafos
-            let username = document.createElement('p')
-            let title = document.createElement('p')
-            username.textContent = user
-            title.textContent = titulo
-            //username.classList.add('pHover')
-            iconoDiv.appendChild(username)
-            iconoDiv.appendChild(title)
-        }
-
-        contenedor.addEventListener('mouseout', removeHover)
-
-        function removeHover() {
-            img.classList.remove('hover')
-            iconoDiv.classList.add('icono')
-            iconoDiv.classList.remove('a')
-            //Remover los parrafos
-            var p = document.querySelectorAll('#iconoDiv > p')
-            for (let i = 0; i < p.length; i++) {
-                iconoDiv.removeChild(p[i])
+            if (inputValue === '') {
+                ul.innerHTML = '';
+            } else {
+                ul.removeAttribute('class')
             }
         }
 
-        let urlIcono = '/img/close.svg'
-
-        max.addEventListener('click', () => {
-            img.classList.add('imgMax')
-
-            contenedor.removeEventListener('mouseover', hover)
-            img.classList.remove('hover')
-
-            let iconoCerrar = document.createElement('img')
-            iconoCerrar.setAttribute('src', urlIcono);
-            iconoCerrar.classList.add('iconoCerrar')
-            contenedor.appendChild(iconoCerrar)
-            iconoCerrar.addEventListener('click', () => {
-                contenedor.addEventListener('mouseover', hover)
-                iconoCerrar.classList.add('icono')
-                img.classList.remove('imgMax')
-            })
+        //Enter
+        inputSearch.addEventListener("keyup", function (event) {
+            if (event.key === 'Enter') {
+                buscar()
+            }
         })
-
-        //TENDENCIAS DE BUSQUEDA 
-        /*function a(){
-            fetch(`https://api.giphy.com/v1/trending/searches?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le`)
-            .then(response => response.json())
-            .then(json => json.data)
-            .then(info => { 
-                let nuevoText = info.splice(0, 5)
-                for (text of nuevoText) {  
-                    let texto = document.createElement('p')
-                    texto.textContent = text
-                    contenedor.appendChild(texto)
-                }
-            }).catch(console.error);
-        }
-        a()*/
     </script>
+
 </body>
 
 </html>

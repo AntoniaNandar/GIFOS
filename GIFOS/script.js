@@ -1,3 +1,4 @@
+//CAMBIAR ICONOS Y MODO OSCURO
 //Swich img
 function changeImg(iconClick, iconNoc, iconToChange, number) {
     iconClick.addEventListener('change', () => {
@@ -186,3 +187,89 @@ function trendingSearchF() {
         }).catch(console.error);
 }
 trendingSearchF()
+
+
+
+//BUSCADOR
+let inputSearch = document.getElementById('inputSearch')
+let searchBox = document.getElementById('searchBox')
+let searchResult = document.getElementById('searchResult')
+let searchList = document.getElementById('searchList')
+let searchDiv = document.getElementById('searchDiv')
+let verMas = document.getElementById('verMas')
+
+searchBox.addEventListener('click', buscar)
+verMas.addEventListener('click', verMasF)
+inputSearch.addEventListener('keyup', autocomplete)
+
+//Completar buscador desde las sugerencias
+searchList.addEventListener('click', (e) => {
+    inputSearch.value = e.target.firstChild.nodeValue
+    buscar()
+})
+
+//Enter
+inputSearch.addEventListener("keyup", function (event) {
+    if (event.key === 'Enter') {
+        buscar()
+    }
+})
+
+//Activar la busqueda del gif y mostrarlos en pantalla
+function buscar() {
+    var value = inputSearch.value
+    console.log(value)
+    searchList.classList.add('remove')
+    searchResult.innerHTML = ''
+    verMas.removeAttribute('class')
+    fetch(
+            `https://api.giphy.com/v1/gifs/search?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&q=${value}&limit=${numero}&offset=0&rating=g&lang=en`
+        )
+        .then(response => response.json())
+        .then(json => json.data)
+        .then(data => {
+            for (img of data) {
+                let url = img.images.original.url
+                let gif = document.createElement('img')
+                gif.setAttribute = 'src'
+                gif.src = url
+                searchResult.appendChild(gif)
+            }
+        }).catch(console.error);
+}
+
+
+//Autocomplete del buscador
+function autocomplete(event) {
+    let inputValue = inputSearch.value
+    searchList.innerHTML = ''
+    fetch(
+            `https://api.giphy.com/v1/gifs/search/tags?api_key=r04zELcPYCkaQQ8Eaboohd6UpRglZ1Le&q=${inputValue}&limit=5&offset=0`
+        )
+        .then(response => response.json())
+        .then(json => json.data)
+        .then(data => {
+            for (names of data) {
+                let li = document.createElement('li')
+                li.innerHTML = names.name
+                searchList.appendChild(li)
+            }
+        })
+    if (inputValue === '') {
+        searchList.innerHTML = '';
+        searchList.classList.add('remove')
+    } else {
+        searchList.removeAttribute('class')
+    }
+}
+
+//Ver mas (pasar de 12 en 12 gif, hasta llegar a 48)
+let numero = 12
+function verMasF() {
+    searchResult.innerHTML = ''
+    numero = numero + 12
+    if (numero > 48) {
+        numero = 12
+    }
+    buscar()
+}

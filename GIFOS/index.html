@@ -42,11 +42,23 @@
             <img src="/images/ilustra_header.svg" alt="header_ilustra" class="headerIlustra">
         </div>
 
-        <div class="searchDiv">
+        <div id="searchDiv">
+            <input type="text" class="search" placeholder="Busca GIFOS y más" name="search" id="inputSearch">
+            <input type="checkbox" id="searchBox">
+            <label for="searchBox" id="searchLabel"><img src="/images/icon-search.svg" alt="iconSearch"></label>
+            <ul id="searchList" class="remove"></ul>
+        </div>
+        <div id="searchResult"></div>
+        
+        <button id="verMas" class="verMas">Ver Mas</button>
+
+        <!--<div class="searchDiv">
             <input type="text" class="search" placeholder="Busca GIFOS y más">
             <input type="checkbox" id="searchBox">
             <label for="searchBox"><img src="/images/icon-search.svg" alt="iconSearch" class="iconSearch"></label>
-        </div>
+        </div>-->
+
+
     </main>
     <section>
         <h2>Trending</h2>

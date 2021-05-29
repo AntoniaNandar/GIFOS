@@ -52,40 +52,85 @@ main .headerIlustra {
   margin: 1.3em 0 -0.3em 0;
 }
 
-.searchDiv img {
-  position: relative;
-  top: -33px;
-  left: 130px;
+/*#searchDiv img {
+    position: relative;
+    top: -33px;
+    left: 130px;
+}
+
+.search {
+    display: block;
+    border-radius: 27px;
+    border: 1px solid;
+    padding: 3vw 17vw;
+    font-size: 16px;
+}*/
+#searchResult > img {
+  width: 156px;
+  height: 120px;
+}
+
+#searchLabel {
+  position: absolute;
+}
+
+#searchDiv {
+  border-radius: 27px;
+  border: 1px solid;
+  padding: 15px 35px;
 }
 
 .search {
   display: block;
-  border-radius: 27px;
-  border: 1px solid;
-  padding: 3vw 17vw;
+  border: none;
   font-size: 16px;
+  color: #000000;
 }
 
-input[type=text]:focus,
-#input::-webkit-input-placeholder {
+#input::-webkit-input-placeholder,
+#searchDiv li {
+  color: #6B7989;
+  padding: 8px 0;
+}
+
+#input:-ms-input-placeholder,
+#searchDiv li {
+  color: #6B7989;
+  padding: 8px 0;
+}
+
+#input::-ms-input-placeholder,
+#searchDiv li {
+  color: #6B7989;
+  padding: 8px 0;
+}
+
+#input::placeholder,
+#searchDiv li {
+  color: #6B7989;
+  padding: 8px 0;
+}
+
+#searchList {
+  padding: 1px 2px;
+  border-top: 2px solid;
   color: #6B7989;
 }
 
-input[type=text]:focus,
-#input:-ms-input-placeholder {
-  color: #6B7989;
+input[type=text]:focus {
+  outline: none;
 }
 
-input[type=text]:focus,
-#input::-ms-input-placeholder {
-  color: #6B7989;
+#searchDiv img {
+  position: relative;
+  top: -20px;
+  left: 86px;
 }
 
-input[type=text]:focus,
+/*input[type=text]:focus,
 #input::placeholder {
-  color: #6B7989;
-}
-
+    color: #6B7989;
+}*/
 .trendingGifos {
   background: #F3F5F8 100%;
   color: #000000;
@@ -135,7 +180,10 @@ ul a {
 }
 
 .menuList,
-input {
+input,
+.remove,
+.verMas,
+#searchBox {
   display: none;
 }
 

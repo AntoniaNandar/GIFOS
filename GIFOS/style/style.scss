@@ -47,26 +47,71 @@ main {
     }
 }
 
-.searchDiv img {
+//Buscador
+/*#searchDiv img {
     position: relative;
     top: -33px;
     left: 130px;
 }
 
-
-//Buscador
 .search {
     display: block;
     border-radius: 27px;
     border: 1px solid;
     padding: 3vw 17vw;
     font-size: 16px;
+}*/
+
+#searchResult>img {
+    width: 156px;
+    height: 120px;
 }
 
-input[type=text]:focus,
-#input::placeholder {
+#searchLabel {
+    position: absolute;
+}
+
+#searchDiv {
+    border-radius: 27px;
+    border: 1px solid;
+    padding: 15px 35px;
+}
+
+.search {
+    display: block;
+    border: none;
+    font-size: 16px;
+    color: #000000;
+}
+
+#input::placeholder,
+#searchDiv li {
+    color: #6B7989;
+    padding: 8px 0;
+}
+
+#searchList {
+    padding: 1px 2px;
+    border-top: 2px solid;
     color: #6B7989;
 }
+
+input[type=text]:focus {
+    outline: none;
+}
+
+#searchDiv img {
+    position: relative;
+    top: -20px;
+    left: 86px;
+}
+
+/*input[type=text]:focus,
+#input::placeholder {
+    color: #6B7989;
+}*/
+
+
 
 //Trending GIFOS
 .trendingGifos {
@@ -117,7 +162,10 @@ ul {
 }
 
 .menuList,
-input {
+input,
+.remove,
+.verMas,
+#searchBox {
     display: none;
 }
 
